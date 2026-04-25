@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Genre Predictor</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        h1 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 60%;
+            height: 120px;
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            background-color: #ff7b00;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #ff9500;
+        }
+
+        .result {
+            margin-top: 30px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            display: inline-block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>🎬 Movie Genre Predictor</h1>
+
+        <form action="/predict" method="post">
+            <textarea name="plot" placeholder="Enter movie plot..."></textarea><br>
+            <button type="submit">Predict Genre</button>
+        </form>
+
+        {% if prediction %}
+            <div class="result">
+                Predicted Genre: {{ prediction }}
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
