@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spam SMS Detector</title>
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>📩 Spam SMS Detector</h1>
+
+        <p class="subtitle">
+            Detect whether an SMS is Spam or Legitimate using AI
+        </p>
+
+        <form action="/predict" method="POST">
+
+            <textarea
+                name="message"
+                placeholder="Type your SMS message here..."
+                required></textarea>
+
+            <button type="submit">
+                Analyze Message
+            </button>
+
+        </form>
+
+        {% if prediction_text %}
+
+        <div class="result">
+
+            {% if prediction_text == "Spam Message" %}
+
+                🚨 {{ prediction_text }}
+
+            {% else %}
+
+                ✅ {{ prediction_text }}
+
+            {% endif %}
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
