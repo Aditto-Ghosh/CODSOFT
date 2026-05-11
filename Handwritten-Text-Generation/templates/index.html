@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Handwritten Text Generator</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <div class="background"></div>
+
+    <div class="container">
+
+        <div class="glass-card">
+
+            <h1>AI Handwritten Text Generator</h1>
+
+            <p class="subtitle">
+                Character-Level Recurrent Neural Network trained on IAM Handwriting Dataset
+            </p>
+
+            <form method="POST">
+
+                <button type="submit">
+                    Generate Text
+                </button>
+
+            </form>
+
+            <div class="output-section">
+
+                <h2>Generated Output</h2>
+
+                <div class="output-box">
+
+                    {{ output }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
