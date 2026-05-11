@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fraud Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h1>💳 Credit Card Fraud Detection</h1>
+    <p class="subtitle">AI-powered transaction risk analysis</p>
+
+    <form action="/predict" method="post">
+
+        <div class="input-group">
+            <input type="number" step="any" name="amount" placeholder="💰 Amount" required>
+        </div>
+
+        <div class="row">
+            <input type="number" step="any" name="lat" placeholder="📍 Latitude" required>
+            <input type="number" step="any" name="long" placeholder="📍 Longitude" required>
+        </div>
+
+        <div class="input-group">
+            <input type="number" name="city_pop" placeholder="👥 City Population" required>
+        </div>
+
+        <div class="input-group">
+            <input type="number" name="unix_time" placeholder="⏱ Unix Time" required>
+        </div>
+
+        <div class="row">
+            <input type="number" step="any" name="merch_lat" placeholder="🏪 Merchant Latitude" required>
+            <input type="number" step="any" name="merch_long" placeholder="🏪 Merchant Longitude" required>
+        </div>
+
+        <button type="submit">🔍 Analyze Transaction</button>
+    </form>
+
+    {% if prediction_text %}
+    <div class="result 
+        {% if 'Fraud' in prediction_text %}
+            fraud
+        {% else %}
+            legit
+        {% endif %}">
+        {{ prediction_text }}
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
